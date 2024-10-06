@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2004',  1000,      400],
+          ['2005',  1170,      460],
+          ['2006',  660,       1120],
+          ['2007',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <!-- <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ["Element", "Density", { role: "style" } ],
+            ["Copper", 8.94, "#b87333"],
+            ["Silver", 10.49, "silver"]
+          ]);
+    
+          var view = new google.visualization.DataView(data);
+          view.setColumns([0, 1,
+                           { calc: "stringify",
+                             sourceColumn: 1,
+                             type: "string",
+                             role: "annotation" },
+                           2]);
+    
+          var options = {
+            title: "Density of Precious Metals, in g/cm^3",
+            width: 600,
+            height: 400,
+            bar: {groupWidth: "95%"},
+            legend: { position: "none" },
+          };
+          var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+          chart.draw(view, options);
+      }
+      </script> -->
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        // var data = google.visualization.arrayToDataTable([
+        //   ['Label', 'Value'],
+        //   ['Memory', 80],
+        //   ['CPU', 55],
+        //   ['Network', 68]
+        // ]);
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Frequency', 80]
+        ]);
+
+        var options = {
+          width: 400, height: 120,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+
+        setInterval(function() {
+          data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+          chart.draw(data, options);
+        }, 13000);
+        // setInterval(function() {
+        //   data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
+        //   chart.draw(data, options);
+        // }, 5000);
+        // setInterval(function() {
+        //   data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
+        //   chart.draw(data, options);
+        // }, 26000);
+      }
+    </script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+    <div class="title">
+        <h1>DASHBOARD</h1>
+    </div>
+    <div class="menu">
+        <div id="first">
+            <p>Contact</p>
+            <i class='bx bxs-contact'></i>
+        </div>
+        <div id="sec">
+            <p>Help</p>
+            <i class='bx bx-question-mark' ></i>
+        </div>
+        <div id="third">
+            <p>About us</p>
+            <i class='bx bxs-user-circle'></i>
+        </div>
+    </div>
+    <div id="content">
+        <div class="side">
+            <div id="diet">
+              <h5>Diet Plan:</h5>
+              <select>
+                <option>1 week</option>
+                <option>1 month</option>
+                <option>6 months</option>
+                <option>1 year</option>
+            </select>
+            </div>
+            <div id="suggestion">
+              <h4>You should:</h4><br>
+                <p>Exercise: Moving 30 minutes a day , 5 times a week can improve your overall health and wellbeing</p>
+            </div>
+            <div id="report">
+              <h5>Reports:</h5>
+              <select>
+                <option>Blood test</option>
+                <option>Laboratory test</option>
+                <option>Endoscopy test</option>
+            </select>
+            </div>
+            <div id="task">
+              <h4>Daily Tasks:</h4>
+              <ul>
+                <li>Lcv</li>
+                <li>abc</li>
+                <li>mno</li>
+              </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="line">
+                <div id="heart-rate">
+                  <h3 class="heading">Heart Rate</h3>
+                    <div id="curve_chart" style="width: 400px; height: 150px"></div>
+                </div>
+                <div id="appo-reminder">
+                      <h3 class="heading">Appointment Reminder</h3>
+                      <div id="content2">
+                        <div class="slides">
+                          <div class="img"></div>
+                          <div class="info">
+                            <p><b>name</b></p>
+                            <p>Date-05.06.2024</p>
+                            <p>timing:6:00pm</p>
+                          </div>
+                        </div>
+                        <div id="link">
+                          <a href="calendar.html">Add Appointment</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+           <div class="line">
+                <div id="sneeze-rec">
+                  <h3 class="heading">Sneeze Recorder</h3>
+                  <div class="chart">
+                    <div id="chart_div" style="width: 200px; height: 120px;"></div>
+                    <div id="contentt">
+                      <h3>Frequency:</h3>
+                      <div id="frequency">0</div>
+                      <div id="res">
+                        <p>You need to consult with the doctor</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                 </div>
+                <div id="steps">
+                    <h3 class="heading">Steps in a day</h3>
+                    <!-- <div class="loader"></div> -->
+                    <div class="box">
+                        <div class="box1">
+                        <p>Move-</p>
+                        <h3 style="color:rgb(63, 155, 220)">13,091/1,200 KJ </h3>
+                        <p>Exercise-</p>
+                        <h3 style="color:#6fc2b8">415/30 min</h3>
+                        <p>Move-</p>
+                        <h3 style="color:rgb(215, 144, 38)">16/8 hrs</h3>
+                        
+                        </div>
+                        <div class="box2">
+                          <h3>Steps-</h3>
+                          <p style="color: #6fc2b8">31,466</p> 
+                        <div class="content">
+                          <h3>Distance-</h3>
+                          <p style="color: rgb(215, 144, 38);"> 26.01Km</p>
+                          <i class='bx bx-walk'></i>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <!-- <div id="piechart" style="width: 900px; height: 500px;"></div> -->
+</body>
+</html>
