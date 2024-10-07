@@ -1,16 +1,15 @@
-const freq=document.querySelector("#frequency");
-let result=document.getElementById("res");
-// let frequ=prompt("enter");
-console.log(frequ);
 
-const freqcheck=(frequ,freq)=>{
-    freq.innerText=frequ;
-    if(frequ<=200){
-        result.innerText="Relax! It's just a normal sneeze";
-        result.style.backgroundColor="rgb(94, 133, 38)";
-    }
-    else{
-        res.innerText="you need to consult to doctor";
-        res.style.backgroundColor="red";
-    }
+const freq=document.querySelector("#frequency");
+const res=document.querySelector("#res");
+let f = prompt("Enter freq");
+
+if(f<=200){
+    freq.innerText=f;
+    res.innerText="Relax! It's normal..";
+    res.style.backgroundColor="green";
+}
+else{
+    freq.innerText=f;
+    res.innerText="You need to consult to doctor";
+    res.style.backgroundColor="red";
 }
